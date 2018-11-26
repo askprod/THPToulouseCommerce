@@ -5,3 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+10.times do |index|
+    User.create!(email: "user#{index}@mail.com", password: "password#{index}")
+end
+
+10.times do |index| 
+    Item.create!(title: Faker::Cat.name, description: Faker::Cat.breed, price: Faker::Number.decimal(1), image_url: "image_#{index}.jpg")
+end
+
