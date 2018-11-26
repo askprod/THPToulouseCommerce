@@ -1,8 +1,9 @@
 class HomeController < ApplicationController
   def index
+    @cats = Item.all
   end
 
   def show
-    @cats = Item.all
+
   end
 end
