@@ -1,24 +1,12 @@
-# README
+# CASADECHAPEL
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Notre mission : dealer des photos de chat façon darkweb, c'est complètement illégal ce qu'on fait mais on assume. La prison c'est dur mais la sortie c'est sur, GANG GANG !
 
-Things you may want to cover:
+Composition du KittyGang :
 
-* Ruby version
+`Paul TD. : @askprod => Mr.HackerBot 
+Paul R. : @Blud7 => El mister Costard-sur-mesure
+Patriuck R. : @patpasha => El professor Fait-juste-des-signes-de-gang
+Evan B. : @Cyran0 => El Creator
+Sophie C. : @Xxkevinou => La chica que se llama KeVinou` 
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
