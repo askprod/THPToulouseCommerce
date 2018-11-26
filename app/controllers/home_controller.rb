@@ -1,8 +1,11 @@
 class HomeController < ApplicationController
+  
   def index
+    @cats = Item.all
   end
 
   def show
-    @cats = Item.all
+    @cat_id = Item.find(params[:id])
   end
+
 end

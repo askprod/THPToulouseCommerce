@@ -1,15 +1,12 @@
 <h1>Home#show</h1>
 <p>Find me in app/views/home/show.html.erb</p>
 
-<% @cats.each do |cat| %>
-Name: <%= cat.title %>
+Name: <%= @cat_id.title %>
 <br>
-Type of cat: <%= cat.description%>
+Description: <%= @cat_id.description %>
 <br>
-Price: <%= cat.price %>$
-<br>
-Image(not implemented yet): <%= cat.image_url %>
+Price: <%= @cat_id.price %>$
 <br>
 <button>Add to Cart</button>
-<br><br>
-<% end %>
+
+

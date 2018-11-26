@@ -1,5 +1,4 @@
 
-
 <% if user_signed_in? %>
 <li> Logged as: <%= current_user.email %> </li>
 <li> <%= link_to "Sign out", destroy_user_session_path, method: :delete %> </li>
@@ -8,5 +7,13 @@
 <li> <%= link_to "Sign in", new_user_session_path %> </li>
 <li> <%= link_to "Sign up", new_user_registration_path %> </li>
 
+<% end %>
+
+
+<% @cats.each do |cat| %>
+    Name: <%= cat.title %>
+        <br>
+    <%= link_to "More Detail".html_safe, home_path(cat) %>
+        <br><br>
 <% end %>
 
