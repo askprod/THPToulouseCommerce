@@ -8,11 +8,14 @@
 
 require 'faker'
 
-# 10.times do |index|
-#     User.create!(email: "user#{index}@mail.com", password: "password#{index}")
-# end
+#Seed accounts ONLY if developement env. we don't want random users in production!
+if Rails.env="development"
+    5.times do |index|
+        User.create!(username: "Chaton#{index}", address: Faker::Address.street_address, first_name: Faker::Name.first_name ,last_name: Faker::Name.last_name, email: "user#{index}@mail.com", password: "password#{index}")
+    end
+end
 
-10.times do |index| 
-    Item.create!(title:Faker::Cat.name, description:Faker::Cat.breed, price:Faker::Number.decimal(1), image_url:"image_#{index}.jpg")
+20.times do |index| 
+    Item.create!(title: Faker::Cat.name, description: Faker::Cat.breed, price: Faker::Number.decimal(1), image_url: "chat#{index+1}.png")
 end
 
