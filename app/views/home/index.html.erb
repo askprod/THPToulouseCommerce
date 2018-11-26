@@ -2,14 +2,8 @@
 <p>Find me in app/views/home/index.html.erb</p>
 
 <% @cats.each do |cat| %>
-Name: <%= cat.title %>
-<br>
-Type of cat: <%= cat.description%>
-<br>
-Price: <%= cat.price %>$
-<br>
-Image(not implemented yet): <%= cat.image_url %>
-<br>
-<button>Add to Cart</button>
-<br><br>
+    Name: <%= cat.title %>
+        <br>
+    <%= link_to "More Detail".html_safe, home_path(cat) %>
+        <br><br>
 <% end %>
