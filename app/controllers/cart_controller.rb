@@ -28,6 +28,7 @@ class CartController < ApplicationController
     @current_cart = Cart.find(current_user.id)
     @cart_item = Item.find(params[:cat_id])
     @current_cart.items.delete(@cart_item)
+    redirect_to cart_show_path
   end
 
 end
