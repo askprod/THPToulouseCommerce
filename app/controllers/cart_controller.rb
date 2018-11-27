@@ -30,5 +30,4 @@ class CartController < ApplicationController
     @current_cart.items.delete(@cart_item)
     redirect_to cart_show_path
   end
-
 end
