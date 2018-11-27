@@ -25,7 +25,9 @@ class CartController < ApplicationController
   end
 
   def destroy
-
+    @current_cart = Cart.find(current_user.id)
+    @cart_item = Item.find(params[:cat_id])
+    @current_cart.items.delete(@cart_item)
   end
 
 end
