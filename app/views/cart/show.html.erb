@@ -1,0 +1,9 @@
+<h1>Cart#show</h1>
+<p>Find me in app/views/cart/show.html.erb</p>
+
+<% @current_cart.items.each do |f| %>
+<%= image_tag(f.image_url, size: "300") %>
+<%= link_to "Delete", cart_destroy_path(:cat_id => f.id) %>
+<% end %>
+<br>
+Total Price: <%= @final_price %>

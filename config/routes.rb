@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'cart/index'
+  get 'cart/show'
+  get 'cart/new'
+  get 'cart/destroy'
   root 'home#index'
   devise_for :users
   resources :home
