@@ -1,8 +1,9 @@
 class OrderController < ApplicationController
   def index
+    @all_orders = Order.where(user_id: current_user.id)
   end
 
-  def new
+  def create
     @check_cart_status = Cart.find(current_user.id).items.empty?
 
     if @check_cart_status
@@ -16,14 +17,8 @@ class OrderController < ApplicationController
 
       # Clear the current cart items on checkout/purchase.
       @current_cart.items.destroy(@current_cart.items)
-      redirect_to order_show_path
+      redirect_to order_index_path
     end
   end
 
-  def show
-    @all_orders = Order.where(user_id: current_user.id)
-  end
-
-  def destroy
-  end
 end

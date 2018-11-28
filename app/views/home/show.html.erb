@@ -7,6 +7,6 @@ Description: <%= @cat_id.description %>
 Price: <%= @cat_id.price %>$
 <br>
 <% if signed_in? %>
-<%= link_to "Add to Cart", cart_new_path(:cat_id => @cat_id.id) %>
+<%= link_to "Add to Cart", cart_index_path(:cat_id => @cat_id.id), method: :create %>
 <% end %>
 

@@ -1,9 +1,6 @@
 class CartController < ApplicationController
 
   def index
-  end
-
-  def show
     @current_cart = Cart.find(current_user.id)
 
     # Find total of each item in cart.
@@ -17,7 +14,7 @@ class CartController < ApplicationController
     @final_price = @total_price.sum.round(2)
   end
 
-  def new  
+  def create
     @current_cart = Cart.find(current_user.id)
     @cart_item = Item.find(params[:cat_id])
     @current_cart.items << @cart_item
@@ -26,7 +23,7 @@ class CartController < ApplicationController
 
   def destroy
     @current_cart = Cart.find(current_user.id)
-    @cart_item = Item.find(params[:cat_id])
+    @cart_item = Item.find(params[:id])
     number_of_cats = @current_cart.items.where(id: @cart_item).count
     
     #Supprimer l'item du cart
@@ -34,9 +31,9 @@ class CartController < ApplicationController
 
     # Cool feature
     if @current_cart.items.count > 0
-      redirect_to cart_show_path
+      redirect_to cart_index_path
     else
-      redirect_to home_index_path
+      redirect_to home_index_path 
     end
   end
 

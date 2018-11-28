@@ -1,2 +1,22 @@
-<h1>Cart#index</h1>
-<p>Find me in app/views/cart/index.html.erb</p>
+<% if @current_cart.items.count == 0 %>
+    Your cart is empty.
+<% else %>
+    Number of items in cart: <%= @current_cart.items.count %>
+    <br>
+    Total Price: <%= @final_price %>
+    <br>
+    <%= link_to "Checkout", order_index_path(:cart => @current_cart), method: :create %>
+    <br>
+    <% @current_cart.items.each do |f| %>
+        <%= image_tag(f.image_url, size: "300") %>
+        <br>
+        <%= link_to "Delete", cart_path(:id => f.id), method: :delete %>
+        <br>
+        <%= f.title %>
+        <br>
+        <%= f.description %>
+        <br>
+        <%= f.price %>
+        <br>
+    <% end %>
+<% end %>

@@ -2,8 +2,8 @@
 <li> Logged-in as: <%= current_user.username.capitalize %> </li>
 <li> <%= link_to "Log Out", destroy_user_session_path, method: :delete %> </li>
 <li> <%= link_to "Edit Account", edit_user_registration_path %></li>
-<li> <%= link_to "My Cart", cart_show_path %> (<%= current_user.cart.items.count %>)</li>
-<li> <%= link_to "My Orders", order_show_path %></li>
+<li> <%= link_to "My Cart", cart_index_path %> (<%= current_user.cart.items.count %>)</li>
+<li> <%= link_to "My Orders", order_index_path %></li>
 
 <% else %> 
 <li> <%= link_to "Log In", new_user_session_path %> </li>
@@ -21,7 +21,7 @@
         <br>
     <%= link_to "More Details".html_safe, home_path(cat) %>
     <% if signed_in? %>
-        <%= link_to "Add to Cart", cart_new_path(:cat_id => cat.id) %>
+        <%= link_to "Add to Cart", cart_index_path(:cat_id => cat.id), method: :create %>
     <% end %>
         <br><br>
 <% end %>
