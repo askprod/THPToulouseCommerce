@@ -21,14 +21,23 @@ class CartController < ApplicationController
     @current_cart = Cart.find(current_user.id)
     @cart_item = Item.find(params[:cat_id])
     @current_cart.items << @cart_item
-    redirect_to cart_show_path
+    redirect_to home_index_path
   end
 
   def destroy
     @current_cart = Cart.find(current_user.id)
     @cart_item = Item.find(params[:cat_id])
+    number_of_cats = @current_cart.items.where(id: @cart_item).count
+    
+    #Supprimer l'item du cart
     @current_cart.items.delete(@cart_item)
-    redirect_to cart_show_path
+
+    # Cool feature
+    if @current_cart.items.count > 0
+      redirect_to cart_show_path
+    else
+      redirect_to home_index_path
+    end
   end
 
 end
