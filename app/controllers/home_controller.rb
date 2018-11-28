@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  
+
   def index
     @cats = Item.all
     
@@ -13,7 +13,8 @@ class HomeController < ApplicationController
   end
 
   def show
-    @cat_id = Item.find(params[:id])
+    @cat_name = Item.find_by_title("#{params[:id].capitalize}")
+    @cat_id = Item.find(@cat_name.id)
   end
 
 end

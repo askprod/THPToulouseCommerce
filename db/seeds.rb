@@ -16,6 +16,6 @@ if Rails.env="development"
 end
 
 20.times do |index| 
-    Item.create!(title: Faker::Cat.name, description: Faker::Cat.breed, price: Faker::Number.decimal(1), image_url: "chat#{index+1}.png")
+    Item.create!(title: Faker::Cat.unique.name, description: Faker::Cat.breed, price: Faker::Number.decimal(1), image_url: "chat#{index+1}.png")
 end
 

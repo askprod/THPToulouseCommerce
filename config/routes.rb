@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   
   root 'home#index'
   devise_for :users
-  resources :home, only: [:index, :show]
+  resources :home, only: [:index, :show], :path => "cat"
   resources :order, only: [:index, :create]
   resources :cart, only: [:index, :create, :destroy]
 
