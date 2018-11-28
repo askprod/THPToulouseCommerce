@@ -11,12 +11,8 @@ require 'faker'
 #Seed accounts ONLY if developement env. we don't want random users in production!
 if Rails.env="development"
     5.times do |index|
-        User.create!(username: "Chaton#{index}", address: Faker::Address.street_address, first_name: Faker::Name.first_name ,last_name: Faker::Name.last_name, email: "user#{index+1}@mail.com", password: "password#{index+1}")
+        User.create!(username: "Chaton#{index+1}", address: Faker::Address.street_address, first_name: Faker::Name.first_name ,last_name: Faker::Name.last_name, email: "user#{index+1}@mail.com", password: "password#{index+1}")
     end
-end
-
-5.times do |index|
-    Cart.create!(name: "My Cart", user_id: index+1)
 end
 
 20.times do |index| 
