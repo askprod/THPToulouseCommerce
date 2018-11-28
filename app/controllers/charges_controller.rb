@@ -1,8 +1,6 @@
 class ChargesController < ApplicationController
 
 	def index  
-	  redirect_to cart_show_path
-	  flash[:notice] = "Yeey, you successfully paid !"
 	end
 
 	def new
@@ -38,6 +36,6 @@ class ChargesController < ApplicationController
 
 	rescue Stripe::CardError => e
 	  flash[:error] = e.message
-	  # redirect_to new_charge_path
+	  redirect_to new_charge_path
 	end
 end

@@ -4,6 +4,8 @@ class OrderController < ApplicationController
   end
 
   def create
+    @all_orders = Order.where(user_id: current_user.id)
+
     @check_cart_status = Cart.find(current_user.id).items.empty?
 
     if @check_cart_status
