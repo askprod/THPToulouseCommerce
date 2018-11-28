@@ -14,3 +14,11 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+//= require jquery/jquery-2.2.4.min.js
+//= require active.js
+//= require bootstrap.min.js
+//= require classy-nav.min.js
+//= require map-active.js
+//= require plugins.js
+//= require popper.min.js
+

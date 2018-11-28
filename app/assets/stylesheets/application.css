@@ -12,4 +12,12 @@
  *
  *= require_tree .
  *= require_self
+ *= require jquery-ui.min.css
+ *= require animate.css
+ *= require classy-nav.min.css
+ *= require bootstrap.min.css
+ *= require font-awesome.min.css
+ *= require magnific-popup.css
+ *= require nice-select.css
+ *= require owl.carousel.css
  */
