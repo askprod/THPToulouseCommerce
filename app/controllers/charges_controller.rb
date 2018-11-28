@@ -1,7 +1,8 @@
 class ChargesController < ApplicationController
 
 	def index  
-	  redirect_to show_cart_path
+	  redirect_to cart_show_path
+	  flash[:notice] = "Yeey, you successfully paid !"
 	end
 
 	def new
@@ -9,7 +10,19 @@ class ChargesController < ApplicationController
 
 	def create
 	  # Amount in cents
-	  @amount = 500
+    @current_cart = Cart.find(current_user.id)
+
+    # Find total of each item in cart.
+    # A modifier si possible en méthode à part
+    @total_price = []
+    item_price = @current_cart.items
+    item_price.each do |f|
+      f.price
+      @total_price << f.price
+    end
+    @final_price = @total_price.sum.round(2)
+
+	  @amount = (@final_price * 100).round
 
 	  customer = Stripe::Customer.create(
 	    :email => params[:stripeEmail],
@@ -25,6 +38,6 @@ class ChargesController < ApplicationController
 
 	rescue Stripe::CardError => e
 	  flash[:error] = e.message
-	  redirect_to new_charge_path
+	  # redirect_to new_charge_path
 	end
 end
