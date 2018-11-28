@@ -3,8 +3,6 @@
 <% else %>
     Number of items in cart: <%= @current_cart.items.count %>
     <br>
-    <%= link_to "Checkout", order_index_path(:cart => @current_cart), method: :create %>
-    <br>
     <% @current_cart.items.each do |f| %>
         <%= image_tag(f.image_url, size: "300") %>
         <br>
