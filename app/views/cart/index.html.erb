@@ -3,10 +3,6 @@
 <% else %>
     Number of items in cart: <%= @current_cart.items.count %>
     <br>
-    Total Price: <%= @final_price %>
-    <br>
-    <%= link_to "Checkout", order_index_path(:cart => @current_cart), method: :create %>
-    <br>
     <% @current_cart.items.each do |f| %>
         <%= image_tag(f.image_url, size: "300") %>
         <br>
@@ -19,4 +15,29 @@
         <%= f.price %>
         <br>
     <% end %>
+
+<% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+  <% end %>
+
+<%= form_tag charges_path do %>
+  <article>
+    <% if flash[:error].present? %>
+      <div id="error_explanation">
+        <p><%= flash[:error] %></p>
+      </div>
+    <% end %>
+    <label class="amount">
+      <span>Amount of your cart: <%= @final_price %>$</span>
+    </label>
+  </article>
+
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-description="Order your cart's items"
+          data-amount="@final_price"
+          data-locale="auto"></script>
 <% end %>
+<% end %>
+
+
