@@ -1,18 +1,18 @@
 <% if @current_cart.items.count == 0 %>
-    Your cart is empty.
+    Your Cart is empty.
 <% else %>
-    Number of items in cart: <%= @current_cart.items.count %>
+    Number of items: <%= @current_cart.items.count %>
     <br>
     <% @current_cart.items.each do |f| %>
         <%= image_tag(f.image_url, size: "300") %>
         <br>
-        <%= link_to "Delete", cart_path(:id => f.id), method: :delete %>
+        <%= link_to "Remove from Cart", cart_path(:id => f.id), method: :delete %>
         <br>
         <%= f.title %>
         <br>
         <%= f.description %>
         <br>
-        <%= f.price %>
+        <%= f.price %>$
         <br>
     <% end %>
 
@@ -27,14 +27,19 @@
         <p><%= flash[:error] %></p>
       </div>
     <% end %>
+    <br>
     <label class="amount">
-      <span>Amount of your cart: <%= @final_price %>$</span>
+      <span>Total Price: <%= @final_price %>$</span>
     </label>
   </article>
-
+<br>
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
           data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-          data-description="Order your cart's items"
+          data-description="Purchase <%= @current_cart.items.count %> 
+                                      <% if @current_cart.items.count > 1 %> Cats 
+                                      <% else %> Cat 
+                                      <% end %>
+                                      for <%= @final_price %>$"
           data-amount="@final_price"
           data-locale="auto"></script>
 <% end %>

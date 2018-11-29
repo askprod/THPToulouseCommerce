@@ -14,6 +14,10 @@ case Rails.env
 
 when "development"
 
+1.times do |index|
+    User.create!(username: "Admin", address: "Ras La Tasse", first_name: "Admin", last_name: "Admin", email: "admin@admin.com", password: "admintoulouse31", admin: true)
+end
+
 5.times do |index|
     User.create!(username: "Chaton#{index+1}", address: Faker::Address.street_address, first_name: Faker::Name.first_name ,last_name: Faker::Name.last_name, email: "user#{index+1}@mail.com", password: "password#{index+1}")
 end

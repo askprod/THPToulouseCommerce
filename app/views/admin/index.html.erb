@@ -1,0 +1,42 @@
+<% if user_signed_in? && current_user.admin? %>
+Welcome to your admin page <%= current_user.username %>
+<br><br>
+You can add an item to your site: <%= link_to "HERE" %>.
+<br>
+I would recommend getting new images <%= link_to "HERE", "https://www.cryptokitties.co/catalogue/new-arrivals" %>.
+<br><br>
+Here are all the accounts:
+    <br>
+    <% @all_users.sort_by(&:id).each do |user| %>
+        <%= user.id %> |
+        <%= user.email %> |
+        <%= user.username %> |
+        <%= user.address %> |
+        <%= user.first_name %> <%= user.last_name %> |
+        <%= user.created_at %> |
+        <%= user.updated_at %> |
+        <%= user.admin %> |
+        <br>
+    <% end %>
+    <br>
+Here are all the orders:
+    <br>
+    Total number of orders: <%= @all_orders.count %>
+    <br>
+    Average order price: <%= @all_orders.average(:price).round(2) %>$
+    <br><br>
+    <% @all_orders.sort_by(&:id).each do |order| %>
+        Order: <%= order.id %>
+        <br>
+        By user: <%= User.find(order.user_id).username %> <%= User.find(order.user_id).email %>
+        <br>
+        Number of items ordered: <%= order.items.count %>
+        <br>
+        Ordered at: <%= order.created_at %>
+        <br>
+        Total payed: <%= order.price %>$
+        <br><br>
+    <% end %>
+<% else %>
+<% controller.redirect_to home_index_path %>
+<% end %>
