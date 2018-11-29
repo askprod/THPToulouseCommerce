@@ -19,6 +19,8 @@ class OrderController < ApplicationController
 
       # Clear the current cart items on checkout/purchase.
       @current_cart.items.destroy(@current_cart.items)
+      UserMailer.order_email(@current_user).deliver_now!
+
       redirect_to order_index_path
     end
   end
