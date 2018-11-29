@@ -28,6 +28,10 @@ end
 
 when "production"
 
+1.times do |index|
+    User.create!(username: "Admin", address: "Ras La Tasse", first_name: "Admin", last_name: "Admin", email: "admin@admin.com", password: "admintoulouse31", admin: true)
+end
+
 20.times do |index| 
     Item.create!(title: Faker::Cat.unique.name, description: Faker::Cat.breed, price: Faker::Number.decimal(1), image_url: "chat#{index+1}.png")
 end
