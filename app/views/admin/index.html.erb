@@ -20,11 +20,16 @@ Here are all the accounts:
     <% end %>
     <br>
 Here are all the orders:
-    <br>
-    Total number of orders: <%= @all_orders.count %>
-    <br>
-    Average order price: <%= @all_orders.average(:price).round(2) %>$
-    <br><br>
+    <% if @all_orders.count == 0 %>
+        <br>
+        No orders processed yet.
+    <% else %>
+        <br>
+        Total number of orders: <%= @all_orders.count %>
+        <br>
+        Average order price: <%= @all_orders.average(:price).round(2) %>$
+        <br><br>
+    <% end %>
     <% @all_orders.sort_by(&:id).each do |order| %>
         Order: <%= order.id %>
         <br>
