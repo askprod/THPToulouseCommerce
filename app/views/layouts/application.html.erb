@@ -4,12 +4,59 @@
     <title>ToulouseEcommerce</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
+<div class="main-content-wrapper d-flex clearfix">
+    <div class="mobile-nav">
+            <!-- Navbar Brand -->
+            <div class="amado-navbar-brand">
+                <a href="index.html"><p>KITTY</p></a>
+            </div>
+            <!-- Navbar Toggler -->
+            <div class="amado-navbar-toggler">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <!-- Header Area Start -->
+        <header class="header-area clearfix">
+            <!-- Close Icon -->
+            <div class="nav-close">
+                <i class="fa fa-close" aria-hidden="true"></i>
+            </div>
+            <!-- Logo -->
+            <div class="logo">
+                <a href="index.html"><p>KITTY</p></a>
+            </div>
+            
+          
+      <% if user_signed_in? %>
+            <h3>Logged-in as: <%= current_user.username.capitalize %></h3>
+            <!-- Amado Nav -->
+            <nav class="amado-nav">
+                <ul>
+                    <li><a href="/users/edit">Edit Account</a></li>
+                    <li><a href="#">My Cart</a></li>
+                    <li><a href="#">My Orders</a></li>
+                </ul>
+            </nav>
+            <!-- Button Group -->
+            <div class="amado-btn-group mt-30 mb-100">
+                <a href="/users/sign_out" class="btn amado-btn mb-15">Log Out</a>
+            </div>
+      <% else %> 
+            <!-- Button Group -->
+            <div class="amado-btn-group mt-30 mb-100">
+                <a href="/users/sign_in" class="btn amado-btn mb-15">Log In</a>
+                <a href="/users/sign_up" class="btn amado-btn mb-15">Create Account</a>
+            </div>
+      <% end %>
+            <!-- Cart Menu -->
+            <!-- Social Button -->
+            
+        </header>
+</div>   
     <%= yield %>
   </body>
 </html>
