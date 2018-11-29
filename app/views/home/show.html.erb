@@ -1,12 +1,70 @@
-<%= image_tag @cat_id.image_url, size: "500" %>
-<br>
-Name: <%= @cat_id.title %>
-<br>
-Description: <%= @cat_id.description %>
-<br>
-Price: <%= @cat_id.price %>$
-<br>
-<% if signed_in? %>
-<%= link_to "Add to Cart", cart_index_path(:cat_id => @cat_id.id), method: :create %>
-<% end %>
+<!-- Product Details Area Start -->
+        <div class="single-product-area section-padding-100 clearfix">
+            <div class="container-fluid">
+
+                <div class="row">
+                    <div class="col-12">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb mt-50">
+                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                <li class="breadcrumb-item"><a href="#">Furniture</a></li>
+                                <li class="breadcrumb-item"><a href="#">Chairs</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Smokey</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+
+                    <div class="col-12 col-lg-5">
+                        <div class="single_product_desc">
+                            <!-- Product Meta Data -->
+                            <div class="product-meta-data">
+                                <div class="line"></div>
+                                <p class="product-price">$180</p>
+                                <a href="product-details.html">
+                                    <h6>Smokey</h6>
+                                </a>
+
+	<%= image_tag @cat_id.image_url, size: "500" %>
+	<br>
+	Name: <%= @cat_id.title %>
+	<br>
+	Description: <%= @cat_id.description %>
+	<br>
+	Price: <%= @cat_id.price %>$
+	<br>
+	<% if signed_in? %>
+	<%= link_to "Add to Cart", cart_index_path(:cat_id => @cat_id.id), method: :create %>
+	<% end %>
+                                <!-- Ratings & Review -->
+                                <div class="ratings-review mb-15 d-flex align-items-center justify-content-between">
+                                    <div class="ratings">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="review">
+                                        <a href="#">Write A Review</a>
+                                    </div>
+                                </div>
+                                <!-- Avaiable -->
+                                <p class="avaibility"><i class="fa fa-circle"></i> In Stock</p>
+                            </div>
+
+                            <div class="short_overview my-5">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid quae eveniet culpa officia quidem mollitia impedit iste asperiores nisi reprehenderit consequatur, autem, nostrum pariatur enim?</p>
+                            </div>
+                                <button type="submit" name="addtocart" value="5" class="btn amado-btn">Add to cart</button>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Product Details Area End -->
+    </div>
+
 
