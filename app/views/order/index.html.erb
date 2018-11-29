@@ -5,11 +5,13 @@ Your previous orders:
 <% @all_orders.each do |f| %>
     Order Reference: <%= f.id %>
     <br>
+    Total paid: <%= f.price %>$
+    <br>
+    Number of items ordered: <%= f.items.count %>
+    <br>
         <% f.items.each do |item| %>
-            <%= item.title %>
-            <br>
-            <%= item.description %>
-            <br>
+            <%= item.title %>,
+            <%= item.description %>,
             <%= item.price %>
             <br>
         <% end %>

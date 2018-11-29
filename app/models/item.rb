@@ -1,4 +1,10 @@
 class Item < ApplicationRecord
+    validates_uniqueness_of :title
+
+    def to_param
+        title.downcase
+    end
+
     has_and_belongs_to_many :orders
     has_and_belongs_to_many :carts
     

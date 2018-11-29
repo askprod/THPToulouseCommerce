@@ -9,13 +9,31 @@
 require 'faker'
 
 #Seed accounts ONLY if developement env. we don't want random users in production!
-if Rails.env="development"
-    5.times do |index|
-        User.create!(username: "Chaton#{index+1}", address: Faker::Address.street_address, first_name: Faker::Name.first_name ,last_name: Faker::Name.last_name, email: "user#{index+1}@mail.com", password: "password#{index+1}")
-    end
+
+case Rails.env
+
+when "development"
+
+1.times do |index|
+    User.create!(username: "Admin", address: "Ras La Tasse", first_name: "Admin", last_name: "Admin", email: "admin@admin.com", password: "admintoulouse31", admin: true)
+end
+
+5.times do |index|
+    User.create!(username: "Chaton#{index+1}", address: Faker::Address.street_address, first_name: Faker::Name.first_name ,last_name: Faker::Name.last_name, email: "user#{index+1}@mail.com", password: "password#{index+1}")
 end
 
 20.times do |index| 
-    Item.create!(title: Faker::Cat.name, description: Faker::Cat.breed, price: Faker::Number.decimal(1), image_url: "chat#{index+1}.png")
+    Item.create!(title: Faker::Cat.unique.name, description: Faker::Cat.breed, price: Faker::Number.decimal(1), image_url: "chat#{index+1}.png")
 end
 
+when "production"
+
+1.times do |index|
+    User.create!(username: "Admin", address: "Ras La Tasse", first_name: "Admin", last_name: "Admin", email: "admin@admin.com", password: "admintoulouse31", admin: true)
+end
+
+20.times do |index| 
+    Item.create!(title: Faker::Cat.unique.name, description: Faker::Cat.breed, price: Faker::Number.decimal(1), image_url: "chat#{index+1}.png")
+end
+
+end

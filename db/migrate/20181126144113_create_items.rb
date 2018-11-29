@@ -1,7 +1,7 @@
 class CreateItems < ActiveRecord::Migration[5.2]
   def change
     create_table :items do |t|
-      t.string :title
+      t.string :title, unique: true
       t.text :description
       t.float :price
       t.string :image_url
